@@ -22,36 +22,36 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/Bike")
+@RequestMapping("/api/Game")
 @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
-public class ControladorBike {
+public class ControladorGame {
       @Autowired
-    private ServiciosBike servicio;
+    private ServiciosGame servicio;
     @GetMapping("/all")
-    public List<Bike> getBikes(){
+    public List<Game> getGames(){
         return servicio.getAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<Bike> getBike(@PathVariable("id") int bikeId) {
-        return servicio.getBike(bikeId);
+    public Optional<Game> getGame(@PathVariable("id") int gameId) {
+        return servicio.getGame(gameId);
     }
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Bike save(@RequestBody Bike bike) {
-        return servicio.save(bike);
+    public Game save(@RequestBody Game game) {
+        return servicio.save(game);
     }
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public Bike update(@RequestBody Bike bike) {
-        return servicio.update(bike);
+    public Game update(@RequestBody Game game) {
+        return servicio.update(game);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public boolean delete(@PathVariable("id") int bikeId) {
-        return servicio.deleteBike(bikeId);
+    public boolean delete(@PathVariable("id") int gameId) {
+        return servicio.deleteGame(gameId);
     }
     
 }

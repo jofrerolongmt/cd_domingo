@@ -11,6 +11,6 @@ import org.springframework.data.repository.CrudRepository;
  *
  * @author FAMILIA
  */
-public interface InterfaceBike  extends CrudRepository<Bike,Integer> {
+public interface InterfaceGame  extends CrudRepository<Game,Integer> {
     
 }

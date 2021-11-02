@@ -30,7 +30,7 @@ import javax.persistence.Table;
 	    @ManyToOne
 	    @JoinColumn(name = "id")
 	    @JsonIgnoreProperties("reservations")
-	    private Bike bike;
+	    private Game game;
 	
 	    @ManyToOne
 	    @JoinColumn(name = "idClient")
@@ -71,12 +71,12 @@ import javax.persistence.Table;
         this.status = status;
     }
 
-    public Bike getBike() {
-        return bike;
+    public Game getGame() {
+        return game;
     }
 
-    public void setBike(Bike bike) {
-        this.bike = bike;
+    public void setGame(Game game) {
+        this.game = game;
     }
 
     public Cliente getClient() {

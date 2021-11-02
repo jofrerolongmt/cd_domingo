@@ -15,24 +15,24 @@ import org.springframework.stereotype.Repository;
  * @author FAMILIA
  */
 @Repository
-public class RepositorioBike {
+public class RepositorioGame {
     
             @Autowired
-	    private InterfaceBike crud;
+	    private InterfaceGame crud;
 	
-	    public List<Bike> getAll(){
-	        return (List<Bike>) crud.findAll();
+	    public List<Game> getAll(){
+	        return (List<Game>) crud.findAll();
 	    }
 	
-	    public Optional<Bike> getBike(int id){
+	    public Optional<Game> getGame(int id){
 	        return crud.findById(id);
 	    }
 	
-	    public Bike save(Bike bike){
-	        return crud.save(bike);
+	    public Game save(Game game){
+	        return crud.save(game);
 	    }
-	    public void delete(Bike bike){
-	        crud.delete(bike);
+	    public void delete(Game game){
+	        crud.delete(game);
 	    }
             
             

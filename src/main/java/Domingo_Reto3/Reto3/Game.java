@@ -18,28 +18,28 @@ package Domingo_Reto3.Reto3;
 	import javax.persistence.Table;
 	
 	@Entity
-	@Table(name = "bike")
-	public class Bike implements Serializable{
+	@Table(name = "game")
+	public class Game implements Serializable{
 	    
 	    @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    private Integer id;
+	    private String developer;
+	    private Integer minage;
 	    private String name;
-	    private String brand;
-	    private Integer year;
-	    private String description;
+            private String description;
 	    
 	    @ManyToOne
 	    @JoinColumn(name = "categoryId")
-	    @JsonIgnoreProperties("bikes")
+	    @JsonIgnoreProperties("games")
 	    private Categoria category;
 	
-	    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "bike")
-	    @JsonIgnoreProperties({"bike", "client"})
+	    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "game")
+	    @JsonIgnoreProperties({"game", "client"})
 	    private List<Mensaje> messages;
             
-            @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "bike")
-	    @JsonIgnoreProperties({"bike", "client"})
+            @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "game")
+	    @JsonIgnoreProperties({"game", "client"})
 	    private List<Reservaciones> reservacion;
 
     public Integer getId() {
@@ -50,28 +50,28 @@ package Domingo_Reto3.Reto3;
         this.id = id;
     }
 
+    public String getDeveloper() {
+        return developer;
+    }
+
+    public void setDeveloper(String developer) {
+        this.developer = developer;
+    }
+
+    public Integer getMinage() {
+        return minage;
+    }
+
+    public void setMinage(Integer minage) {
+        this.minage = minage;
+    }
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
-    public Integer getYear() {
-        return year;
-    }
-
-    public void setYear(Integer year) {
-        this.year = year;
     }
 
     public String getDescription() {
@@ -105,5 +105,8 @@ package Domingo_Reto3.Reto3;
     public void setReservacion(List<Reservaciones> reservacion) {
         this.reservacion = reservacion;
     }
-            
-        }	
+
+  
+    }
+
+    

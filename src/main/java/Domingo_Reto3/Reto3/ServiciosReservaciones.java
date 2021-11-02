@@ -5,6 +5,9 @@
  */
 package Domingo_Reto3.Reto3;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,5 +70,27 @@ public class ServiciosReservaciones {
         }).orElse(false);
         return aBoolean;
     }
-    
+   public ReservationStatus   getReservationStatusReport(){
+        List<Reservaciones> completed=metodosCrud.getReservationByStatus("completed");
+        List<Reservaciones> cancelled=metodosCrud.getReservationByStatus("cancelled");
+        return new ReservationStatus(completed.size(),cancelled.size());
+    }
+
+    public List<Reservaciones> getReservationPeriod(String dateOne,String dateTwo){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date startDate = dateFormat.parse(dateOne);
+            Date endDate = dateFormat.parse(dateTwo);
+            if(startDate.before(endDate)){
+                return metodosCrud.getReservationPeriod(startDate,endDate);
+            }
+        }catch (Exception exception){
+               exception.printStackTrace();
+        }
+        return new ArrayList<>();
+    }
+
+    public List<CountClient> getTopClients(){
+       return metodosCrud.getTopClient();
+    } 
 }
